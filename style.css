@@ -1,5 +1,39 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
 
+body, html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.topbar {
+    background-color: greenyellow;
+    margin: 0;
+    height: 60px;
+    flex: 0 0 auto;
+}
+
+.sections {
+    display: flex; /* use flexbox for sections within container */
+    flex: 1; /* take up remaining space vertically */
+}
+
+.side1{
+    background-color: grey;
+    flex: 1; /* equal sizing according to amount of elements in container */
+    padding: 20px;
+}
+
+.side2{
+    background-color: blueviolet;
+    flex: 1;
+    padding: 20px;
 }
