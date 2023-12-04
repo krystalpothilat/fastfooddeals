@@ -15,7 +15,7 @@ body, html {
 }
 
 .topbar {
-    background-color: greenyellow;
+    background-color: lightblue;
     margin: 0;
     height: 60px;
     flex: 0 0 auto;
@@ -27,13 +27,39 @@ body, html {
 }
 
 .side1{
-    background-color: grey;
+    background-color: white;
     flex: 1; /* equal sizing according to amount of elements in container */
     padding: 20px;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.side1 label {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.side1 input {
+    margin-top: 30px;
+    width: 400px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.resultBox {
+    display: none; /* initially hidden */
+    background-color: lightgray;
+    padding: 10px;
+    height: 200px;
+    width: 400px;
+    margin-top: 305px;
+    position: fixed;
 }
 
 .side2{
-    background-color: blueviolet;
+    background-color: lightgray;
     flex: 1;
     padding: 20px;
 }
