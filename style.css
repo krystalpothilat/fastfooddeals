@@ -50,16 +50,33 @@ body, html {
 
 .resultBox {
     display: none; /* initially hidden */
-    background-color: lightgray;
+    background-color: white;
     padding: 10px;
     height: 200px;
     width: 400px;
     margin-top: 305px;
     position: fixed;
+    border: 1px solid #000;
 }
 
 .side2{
     background-color: lightgray;
     flex: 1;
     padding: 20px;
+}
+
+#results-container {
+    list-style-type: none;
+    padding: 0;
+}
+
+#results-container li {
+    padding: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#results-container li:hover {
+    background: #f0f0f0;
 }

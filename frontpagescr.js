@@ -1,19 +1,11 @@
 const smartyApiUrl = `https://us-autocomplete-pro.api.smarty.com/lookup`;
+const resultsContainer = document.getElementById("results-container");
+const resultsBox = document.getElementById("resultBox");
 
 const debounceDelay = 500;
 let debounceTimer;
 
 console.log("script is running");
-// function checkInput() {
-//     var userInput = document.getElementById("userAddress").value;
-//     var resultBox = document.getElementById("resultBox");
-    
-//     if(userInput.length > 0){
-//         resultBox.style.display = "block";
-//     } else {
-//         resultBox.style.display = "none";
-//     }
-// }
 
 //format address 
 function buildAddress(suggestion) {
@@ -32,8 +24,10 @@ function suggestAddress() {
 
     //no input, do nothing
     if(userInput.length == 0){
+        resultsBox.style.display = "none";
         return;
     }
+
     const params = {
         search: userInput,
         max_results: 5,
@@ -58,11 +52,19 @@ function suggestAddress() {
     .then(data => {
         //process data
         const suggestions = data.suggestions;
+        
+        //clear previous suggestions
+        resultsContainer.innerHTML = "";
 
         suggestions.forEach(suggestion => {
             const formattedAddress =  buildAddress(suggestion);
+            const listItem = document.createElement("li");
+            listItem.textContent = formattedAddress;
+            resultsContainer.appendChild(listItem);
             console.log(formattedAddress);
         });
+        resultsBox.style.display = "block";
+
     })
     .catch(error => {
         console.error("Error:", error);
