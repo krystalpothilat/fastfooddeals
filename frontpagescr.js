@@ -1,6 +1,7 @@
 const smartyApiUrl = `https://us-autocomplete-pro.api.smarty.com/lookup`;
 const resultsContainer = document.getElementById("results-container");
 const resultsBox = document.getElementById("resultBox");
+const dealsButton = document.getElementById("find-deals-button");
 
 const debounceDelay = 500;
 let debounceTimer;
@@ -21,7 +22,6 @@ function buildAddress(suggestion) {
 
 function suggestAddress() {
     const userInput = document.getElementById("userAddress");
-    const dealsButton = document.getElementById("find-deals-button");
 
     //no input, do nothing
     if(userInput.value.length == 0){
@@ -98,4 +98,10 @@ function handleInput() {
 }
 
 document.getElementById("userAddress").addEventListener("input", handleInput);
+
+dealsButton.addEventListener("click", () => {
+    const address = document.getElementById("userAddress").value;
+    window.location.href = `dealspage.html?value=${encodeURIComponent(address)}`;
+    toDealsPage();
+});
 
