@@ -34,6 +34,7 @@ body, html {
     align-items: left;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 }
 
 .side1 label {
@@ -45,7 +46,7 @@ body, html {
     margin-top: 30px;
     width: 400px;
     height: 30px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .resultBox {
@@ -79,4 +80,15 @@ body, html {
 
 #results-container li:hover {
     background: #f0f0f0;
+}
+
+#find-deals-button{
+    display: none;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    background-color: lightgray;
+    margin: 20px;
+    bottom: 50px;
+    right: 20px;
 }

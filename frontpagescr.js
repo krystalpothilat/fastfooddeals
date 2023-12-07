@@ -20,16 +20,19 @@ function buildAddress(suggestion) {
 }
 
 function suggestAddress() {
-    const userInput = document.getElementById("userAddress").value;
+    const userInput = document.getElementById("userAddress");
+    const dealsButton = document.getElementById("find-deals-button");
 
     //no input, do nothing
-    if(userInput.length == 0){
+    if(userInput.value.length == 0){
         resultsBox.style.display = "none";
+        dealsButton.style.display = "none";
         return;
     }
 
+    //parameters for api request
     const params = {
-        search: userInput,
+        search: userInput.value,
         max_results: 5,
     };
 
@@ -60,9 +63,21 @@ function suggestAddress() {
             const formattedAddress =  buildAddress(suggestion);
             const listItem = document.createElement("li");
             listItem.textContent = formattedAddress;
+
+            //check if suggested address is chosen by user
+            listItem.addEventListener("click", () => {
+                //set input box to chosen address
+                userInput.value = formattedAddress;
+
+                //clear suggestions
+                resultsContainer.innerHTML = "";
+                resultsBox.style.display = "none";
+                dealsButton.style.display = "block";
+            });
+
             resultsContainer.appendChild(listItem);
-            console.log(formattedAddress);
         });
+
         resultsBox.style.display = "block";
 
     })
